@@ -28,10 +28,7 @@ app.get('/', (req, res) => {
     try {
       const database = client.db('toyCars')
       const carCollection = database.collection('carCollection')
-      // Connect the client to the server	(optional starting in v4.7)
-      // const indexKeys = { carname:1};
-      // const indexOptions = { name: "carname" }; 
-      // const result = await carCollection.createIndex(indexKeys, indexOptions);
+     
   
       app.post('/alltoys',async(req,res) => {
         const toyinfo =req.body;
@@ -115,25 +112,10 @@ app.get('/', (req, res) => {
         res.send(result)
       })
   
-      // app.get("/searchcar/:carname", async (req, res) => {
-      //   const carname = req.params.carname;
-      //   const result = await carCollection
-      //     .find({
-      //       $or: [
-      //         { carname: { $regex: carname, $options: "i" } },
-      //       ],
-      //     })
-      //     .toArray();
-      //   res.send(result);
-      // });
-  
-  
-  
       await client.db("admin").command({ ping: 1 });
       console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
-      // Ensures that the client will close when you finish/error
-      // await client.close();
+      
     }
   }
   run().catch(console.dir);
